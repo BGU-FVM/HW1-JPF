@@ -41,7 +41,7 @@ There's a lot of technical stuff here, so here are some detailed instructions to
 
 * Below, the shell variable `$JPF` contains the full path to `.../jpf-core/bin/jpf`. Make sure `$JPF` is permitted to execute (`chmod +x $JPF` on Unixes)
 
-.source
+[source, bash]
 ----
 $ java -version               <1>
 java version "1.8.0_201"      <2>
@@ -81,7 +81,7 @@ JPF's wiki has more https://github.com/javapathfinder/jpf-core/wiki/Running-JPF[
 
 1. Verification outputs of the problematic and fixed versions of both files (use output redirection in the console using `> sanity-fixed.txt` or `| tee sanity-fixed.txt` if you're on a UNIX system and you want to see the output while it's being stored to the file).
 1. Fixed versions of the files.
-1. An `explanation.txt` file, explaining what was the initial error and how you fixed it. These explanations can be short.
+1. An `explanation.txt` file, explaining what was the initial error and how you fixed it. These explanations can be short, but detailed enough so we know what you think the problem was and how you solved it.
 
 
 
