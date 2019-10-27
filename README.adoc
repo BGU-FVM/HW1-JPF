@@ -1,0 +1,77 @@
+# Sample Verification: Working with NASA's Java PathFinder
+
+_Introduction to Formal Verification Methods/HW1_
+
+In this exercise we you will experiment with a real-world verification system: https://github.com/javapathfinder/jpf-core[NASA's Java PathFinder] (JPF). JPF is a JVM (that's a Java Virtual Machine, a software that executes Java .class files) whose main purpose is to verify Java programs. NASA open-sourced it in 2005. It is still under active development, both by NASA and by an active used community.
+
+[IMPORTANT]
+This exercise should be done in pairs.
+
+[CAUTION]
+====
+Libraries and binaries for this exercise *must* to be compiled for Java8 - including the JPF's runtime. You *MUST* use a  late version of Java 8 (e.g. 1.8.0_201) because JPF uses some low-level classes that are not present in, e.g., 1.8.0._161.
+
+You can test which Java version you have by typing at the command prompt
+
+    $ java -version
+    
+====
+
+## Stages
+1. Make sure you have Java 1.8.0_201 or above installed
+1. Read https://github.com/javapathfinder/jpf-core/wiki/Introduction[JPF's introduction], up to (and not including) the JPF Key Features page. Make sur eyou read and understand the https://github.com/javapathfinder/jpf-core/wiki/Testing-vs.-Model-Checking[testing vs. modeling] the the two examples.
+1. Install JPF. There's a https://github.com/javapathfinder/jpf-core/wiki/How-to-install-JPF[pretty comprehensive install page] at NASA's wiki.
+1. As a sanity test, verify `Sanity.java`. Fix it so it does not crush, and verify that you've succeeded.
+1. Verify `Problematic.java`. What's the problem?
+1. Fix `Problematic.java`. Don't forget to verify that your fix worked.
+
+### Instructions on Running Sanity.java
+
+There's a lot of technical stuff here, so here are some detailed instructions to get you started. 
+
+* Below, the shell variable `$JPF` contains the full path to `.../jpf-core/bin/jpf`. Make sure `$JPF` is permitted to execute (`chmod +x $JPF` on Unixes)
+
+.source
+----
+$ java -version               <1>
+java version "1.8.0_201"      <2>
+Java(TM) SE Runtime Environment (build 1.8.0_201-b09)
+Java HotSpot(TM) 64-Bit Server VM (build 25.201-b09, mixed mode)
+$ javac Sanity.java           <3>
+$ java Sanity Sanity.java     <4>
+Sanity started
+Hoare
+$ $JPF +classpath=. Sanity    <5>
+JavaPathfinder core system v8.0 (rev e734381a6e606354034111dc855be9a8e454ce71) - (C) 2005-2014 United States Government. All rights reserved.
+... lots of output, may or may not crash
+----
+<1> Testing the Java version
+<2> Java version is 8 and above 200
+<3> Compile Sanity.java
+<4> Run Sanity on an ordinary JVM, just to see it all works
+<5> Run Sanity on JPF
+
+At this point, JPF may or may not detect a crash. This is because it's not backtracking on the choices of `java.util.Random`, basically acting as an ordinary JVM.
+
+Actually verifying Sanity:
+
+    $JPF +classpath=. +cg.enumerate_random=true Sanity
+
+The above line should make JPF detect the issue every time.
+
+[TIP]
+JPF's wiki has more https://github.com/javapathfinder/jpf-core/wiki/Running-JPF[more data on running JPF].
+
+### What to Submit
+
+1. A students.txt file of this structure:
+
+    123456789 email1@server.com Student1 Name
+    987654321 email2@server.com Student2 Name
+
+1. Verification outputs of the problematic and fixed versions of both files (use output redirection in the console using `> sanity-fixed.txt` or `| tee sanity-fixed.txt` if you're on a UNIX system and you want to see the output while it's being stored to the file).
+1. Fixed versions of the files.
+1. An `explanation.txt` file, explaining what was the initial error and how you fixed it. These explanations can be short.
+
+
+
