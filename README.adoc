@@ -29,7 +29,7 @@ You can test which Java version you have by typing at the command prompt
 
 ## Stages
 1. Make sure you have Java 1.8.0_201 or above installed
-1. Read https://github.com/javapathfinder/jpf-core/wiki/Introduction[JPF's introduction], up to (and not including) the JPF Key Features page. Make sur eyou read and understand the https://github.com/javapathfinder/jpf-core/wiki/Testing-vs.-Model-Checking[testing vs. modeling] the the two examples.
+1. Read https://github.com/javapathfinder/jpf-core/wiki/Introduction[JPF's introduction], up to (and not including) the JPF Key Features page. Make sure you read and understand the https://github.com/javapathfinder/jpf-core/wiki/Testing-vs.-Model-Checking[testing vs. modeling] the the two examples.
 1. Install JPF. There's a https://github.com/javapathfinder/jpf-core/wiki/How-to-install-JPF[pretty comprehensive install page] at NASA's wiki.
 1. As a sanity test, verify `Sanity.java`. Fix it so it does not crush, and verify that you've succeeded.
 1. Verify `Problematic.java`. What's the problem?
