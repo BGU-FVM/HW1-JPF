@@ -5,7 +5,7 @@ public class Sanity {
     public static void main( String args[] ) {
         System.out.println("Sanity started");
         Random r = new Random();
-        String researcherString = "Hoare Pnueli Clarke Emerson Sifakis Lamport ";
+        String researcherString = "  Hoare Pnueli Clarke Emerson Sifakis Lamport  ";
         String[] researchers = researcherString.split(" ");
         int wordCount = countWords(researcherString);
         
